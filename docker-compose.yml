@@ -2,10 +2,7 @@ version: '3'
 services:
 
   php-fpm:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: digitalocean.com/php
+    build: ./images/php
     restart: of-failure
     working_dir: /var/www
     volumes:
@@ -22,6 +19,8 @@ services:
       - "8080:80"
     volumes:
       - ./:/var/www
+#       - ./nginx:/etc/nginx/conf.d
+#       - ./data/html:/var/www/html
     networks:
       - app-network
 
